@@ -161,7 +161,50 @@ Por eso en `Fraction` la práctica solo pide getters: los valores se validan en 
 - Ponerle `const` al setter (no compila: intenta modificar).
 - Escribir `real = real;` sin `this->` cuando parámetro y atributo se llaman igual.
 - Que el getter devuelva `void` o el setter devuelva un valor.
+---
+## Constructor parametrizado
 
+Recibe los valores iniciales al crear el objeto. Así el objeto nace completo y válido, sin pasos extra.
+
+```
+ main                         Constructor                    Objeto
+┌────────────────────────┐   ┌──────────────────────────┐   ┌───────────────────┐
+│ CuentaBancaria a(      │   │ titular_(titular)        │   │ titular_ = "Ana"  │
+│    "Ana", 101);        │──►│ numero_(numero)          │──►│ numero_  = 101    │
+└────────────────────────┘   │ saldo_(0)                │   │ saldo_   = 0      │
+   solo da los valores       └──────────────────────────┘   └───────────────────┘
+```
+
+### Cómo se escribe
+
+```cpp
+class CuentaBancaria {
+private:
+    std::string titular_;
+    int numero_;
+    double saldo_;
+
+public:
+    CuentaBancaria(std::string titular, int numero)
+        : titular_(titular), numero_(numero), saldo_(0) {}
+};
+
+int main() {
+    CuentaBancaria a("Ana", 101);     // valores directo en main
+    CuentaBancaria b("Luis", 102);
+}
+```
+
+### Lista de inicialización (`: atributo(valor)`)
+- Se escribe después de los `)` del constructor y antes de `{`.
+- Evita el problema de que el parámetro y el atributo se llamen igual (por eso los atributos llevan `_`).
+- Es la forma más segura de asegurar que cada atributo reciba su valor.
+
+### Errores comunes
+- Cuerpo vacío `{}` sin lista de inicialización: compila, pero los atributos quedan con basura.
+- Declarar variables con tipo dentro del constructor (`int numero = 0;`): crea una variable local que muere al salir. Sin tipo (`numero_ = 0;`) sí asigna al atributo.
+- Poner `;` después de la llave de cierre del constructor: sobra.
+- Pedir el saldo inicial como parámetro cuando el enunciado dice que empieza en 0.
 ## Getters y setters en `main`: casos de uso
 
 Un setter **no es para leer del teclado**: solo cambia un dato de un objeto que ya existe. De dónde viene el dato (código fijo o usuario) es un asunto aparte.
