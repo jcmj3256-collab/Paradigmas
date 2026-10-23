@@ -8,13 +8,13 @@
 ## 🧠 Paradigmas de programación
 
 ### ⭐⭐⭐ Programación orientada a objetos
-- [ ] Clase con atributos, métodos y constructor
-- [ ] Encapsulamiento (privado/público)
-- [ ] Asociación, agregación y composición
-- [ ] Herencia simple
-- [ ] Clases abstractas e interfaces
-- [ ] Polimorfismo
-- [ ] Manejo de excepciones (y crear una propia)
+- [X] Clase con atributos, métodos y constructor
+- [X] Encapsulamiento (privado/público)
+- [X] Asociación, agregación y composición
+- [X] Herencia simple
+- [X] Clases abstractas e interfaces
+- [X] Polimorfismo
+- [X] Manejo de excepciones (y crear una propia)
 - [ ] Mini proyecto: sistema de biblioteca o figuras geométricas
 
 ### ⭐⭐ Programación funcional
